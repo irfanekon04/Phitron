@@ -1,0 +1,7 @@
+Enter an integer: 
+Enter a floating-point number: 
+Enter a character: 
+You entered : 
+Integer = 10
+Floating Point Number = 20.00
+Character = 'c'
