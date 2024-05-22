@@ -2,6 +2,8 @@
     "cmake.configureOnOpen": true,
     "files.associations": {
         "stdio.h": "c",
-        "array": "cpp"
+        "array": "cpp",
+        "iostream": "cpp",
+        "ostream": "cpp"
     }
 }
