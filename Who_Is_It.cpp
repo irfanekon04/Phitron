@@ -4,55 +4,54 @@ class Student
 {
 public:
     int id;
-    string name;
+    char name[101];
     char sec;
     int marks;
-    Student(int id, string name, char sec, int marks)
+    Student(int id, char name[101], char sec, int marks)
     {
         this->id = id;
-        this->name = name;
+        // this->name = name;
+        strcpy(this->name, name);
         this->sec = sec;
         this->marks = marks;
     }
 };
 int main()
 {
-    for (int i = 0; i < 3; i++)
+    int t;
+    cin >> t;
+    for (int i = 0; i < t; i++)
     {
         int id, marks;
         char sec;
-        string name;
+        char name[101];
         cin >> id >> name >> sec >> marks;
-        Student stdnt(id, name, sec, marks);
+        Student a(id, name, sec, marks);
+        cin >> id >> name >> sec >> marks;
+        Student b(id, name, sec, marks);
+        cin >> id >> name >> sec >> marks;
+        Student c(id, name, sec, marks);
+        Student topper(INT_MAX, "", ' ', INT_MIN);
+        // int mn = min({a.id, b.id, c.id});
+        int mx = max({a.marks, b.marks, c.marks});
+        if (mx == a.marks)
+        {
+            topper = a;
+        }
+        else if (mx == b.marks && b.id < topper.id)
+        {
+            topper = b;
+        }
+        else if (mx == c.marks && c.id < topper.id)
+        {
+            topper = c;
+        }
+        // else
+        // {
+        //     cout << "didnt work" << endl;
+        // }
+        cout << topper.id << " " << topper.name << " " << topper.sec << " " << topper.marks << endl;
     }
-    // cin >> stdnt1.id;
-    // getchar();
-    // cin.getline(stdnt1.name, 101);
-    // cin >> stdnt1.sec >> stdnt1.marks;
-    // Student stdnt2;
-    // cin >> stdnt2.id;
-    // getchar();
-    // cin.getline(stdnt2.name, 101);
-    // cin >> stdnt2.sec >> stdnt2.marks;
-    // Student stdnt3;
-    // cin >> stdnt3.id;
-    // getchar();
-    // cin.getline(stdnt3.name, 101);
-    // cin >> stdnt3.sec >> stdnt3.marks;
-    // int mn;
-    // int mx = max({stdnt1.marks, stdnt2.marks, stdnt3.marks});
-    // if (mx == stdnt1.marks)
-    // {
-    //     cout << stdnt1.id << " " << stdnt1.name << " " << stdnt1.sec << " " << stdnt1.marks << endl;
-    // }
-    // else if (mx == stdnt2.marks)
-    // {
-    //     cout << stdnt2.id << " " << stdnt2.name << " " << stdnt2.sec << " " << stdnt2.marks << endl;
-    // }
-    // else if (mx == stdnt3.marks)
-    // {
-    //     cout << stdnt3.id << " " << stdnt3.name << " " << stdnt3.sec << " " << stdnt3.marks << endl;
-    // }
-    cout << stdnt2.id << " " << stdnt2.name << " " << stdnt2.sec << " " << stdnt2.marks << endl;
+
     return 0;
 }
