@@ -4,6 +4,7 @@
         "stdio.h": "c",
         "array": "cpp",
         "iostream": "cpp",
-        "ostream": "cpp"
+        "ostream": "cpp",
+        "*.tcc": "cpp"
     }
 }
