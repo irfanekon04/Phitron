@@ -1,0 +1,124 @@
+#include <bits/stdc++.h>
+using namespace std;
+class Node
+{
+public:
+    int val;
+    Node *next;
+    Node *prev;
+    Node(int val)
+    {
+        this->val = val;
+        this->next = NULL;
+        this->prev = NULL;
+    }
+};
+class myStack
+{
+public:
+    Node *head = NULL;
+    Node *tail = NULL;
+    int sz = 0;
+    void push(int val)
+    {
+        sz++;
+        Node *newNode = new Node(val);
+        if (head == NULL)
+        {
+            head = newNode;
+            tail = newNode;
+            return;
+        }
+        newNode->prev = tail;
+        tail->next = newNode;
+        tail = tail->next;
+    }
+    void pop()
+    {
+        sz--;
+        Node *deleteNode = tail;
+        tail = tail->prev;
+        if (tail == NULL)
+        {
+            head = NULL;
+        }
+        else
+        {
+            tail->next = NULL;
+        }
+
+        delete deleteNode;
+    }
+    int top()
+    {
+        return tail->val;
+    }
+    int size()
+    {
+        return sz;
+    }
+    bool empty()
+    {
+        if (sz == 0)
+            return true;
+        else
+            return false;
+    }
+};
+
+int main()
+{
+    myStack st;
+    myStack st1;
+    // cout << st.top() << endl;
+
+    int n;
+    cin >> n;
+    for (int i = 0; i < n; i++)
+    {
+        int x;
+        cin >> x;
+        st.push(x);
+    }
+    int m;
+    cin >> m;
+    for (int i = 0; i < m; i++)
+    {
+        int y;
+        cin >> y;
+        st1.push(y);
+    }
+    if (st.size() != st1.size())
+    {
+        cout << "NO" << endl;
+    }
+    else
+    {
+        bool flag = false;
+        while (!st.empty())
+        {
+            if (st.top() != st1.top())
+            {
+                cout << "NO" << endl;
+                flag = false;
+                break;
+            }
+            else
+            {
+                st.pop();
+                st1.pop();
+                flag = true;
+            }
+        }
+        if (flag)
+        {
+            cout << "YES" << endl;
+        }
+    }
+    // while (!st.empty())
+    // {
+    //     cout << st.top() << endl;
+    //     st.pop();
+    // }
+    return 0;
+}
