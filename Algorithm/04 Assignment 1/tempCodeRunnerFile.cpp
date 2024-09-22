@@ -1,1 +1,0 @@
-cout << si << " " << sj << endl;
